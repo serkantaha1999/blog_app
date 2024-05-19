@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "private": true,
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "sass": "^1.77.2"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds/js --public-path=assets --loader:.js=jsx --watch",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.3"
+  }
+}
