@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "articles#index"
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  resource :articles, only: [:index, :show]
 
-  # Defines the root path route ("/")
-  root "home#index"
+  namespace :admin do
+    root "articles#index", as: :admin_root
+    resource :articles
+  end
 end
