@@ -1,0 +1,31 @@
+@import "../utils/utils";
+
+.header {
+  padding: rem(16) 0;
+  border-bottom: rem(1) solid $header-border-color;
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.header-menu {
+  &__list {
+    display: flex;
+    gap: rem(15);
+  }
+  &__item {
+    > .router-link {
+      font-size: rem(16);
+      font-weight: 600;
+      transition: color .4s linear;
+      @media (any-hover: hover){
+        //todo: declare variable
+          &:hover {
+              color: #B00100;
+          }
+      }
+    }
+  }
+}

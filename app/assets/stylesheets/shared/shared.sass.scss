@@ -1,0 +1,45 @@
+@import "../utils/utils";
+.page-title {
+  @include adaptiveValue("font-size", 45, 25);
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.pagination {
+  padding-top: rem(45);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: rem(4);
+  }
+  &__btn {
+    border-radius: rem(8);
+    width: rem(25);
+    height: rem(25);
+    background: $mainColor;
+    color: #ffffff;
+    font-size: rem(12);
+    font-weight: 500;
+    transition: background .3s linear;
+    &:disabled {
+      background: $disabled-pagination-color;
+    }
+    svg {
+      transform: translateY(10%);
+      font-size: rem(16);
+    }
+    &.active {
+      background: $hover-link-color;
+    }
+    &:not(&:disabled) {
+      @media (any-hover: hover){
+        &:hover {
+          background: $hover-pagination-color;
+        }
+      }
+    }
+  }
+}

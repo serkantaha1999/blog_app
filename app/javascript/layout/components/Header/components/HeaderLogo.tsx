@@ -6,7 +6,7 @@ const HeaderLogo: FC = () => {
   return (
       <RouterLink url={ROUTES.layout}>
           <img
-              src=""
+              src="/images/logo.svg"
               alt="Header-Logo"
           />
       </RouterLink>

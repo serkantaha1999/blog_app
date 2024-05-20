@@ -1,0 +1,40 @@
+@import "../utils/utils";
+
+.article-skeleton {
+  &__image {
+    border-radius: rem(8);
+    height: rem(250);
+    animation: skeleton-loading 2s linear infinite alternate;
+    @media (max-width: em(1030)) {
+      @include adaptiveValue("height", 330, 210, 840, 690, 1);
+    }
+    @media (max-width:em(690)) {
+      @include adaptiveValue("height", 430, 193, 690, 320, 1);
+    }
+  }
+  &__content {
+    width: 100%;
+    padding: rem(16);
+  }
+  &__title {
+    margin-top: rem(8);
+    height: rem(45);
+    border-radius: rem(8);
+    animation: skeleton-loading 2s linear infinite alternate;
+  }
+  &__text {
+    margin-top: rem(8);
+    border-radius: rem(8);
+    height: rem(60);
+    animation: skeleton-loading 2s linear infinite alternate;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 92%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 98%);
+  }
+}

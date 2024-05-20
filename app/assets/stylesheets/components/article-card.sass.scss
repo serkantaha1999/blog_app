@@ -1,0 +1,35 @@
+@import "../utils/utils";
+
+.article-home-page {
+  box-shadow: 0 rem(8) rem(16) 0 #1C1E2214;
+  border-radius: rem(8);
+  background: #ffff;
+  transition: box-shadow .3s ease 0s;
+  &__image {
+    > img {
+      border-radius: rem(10) rem(10) 0 0;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      @media (min-width: $pc) {
+        height: rem(250);
+      }
+    }
+  }
+  &__content {
+    padding: rem(16);
+  }
+  &__title {
+    padding-top: rem(12);
+    font-weight: 600;
+    font-size: rem(20);
+    &:not(:last-child) {
+        margin-bottom: em(15, 20);
+    }
+  }
+  @media (any-hover: hover){
+    &:hover {
+      box-shadow: rem(10) rem(30) rem(30) 0 #1C1E2214;
+    }
+  }
+}

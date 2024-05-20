@@ -1,6 +1,7 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {App} from './app/App';
+import {BrowserRouter} from 'react-router-dom';
 
 document.addEventListener('turbo:load', () => {
   const rootElement = document.body.appendChild(document.createElement('div'));
@@ -8,7 +9,9 @@ document.addEventListener('turbo:load', () => {
 
   root.render(
     <React.StrictMode>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>,
   );
 });

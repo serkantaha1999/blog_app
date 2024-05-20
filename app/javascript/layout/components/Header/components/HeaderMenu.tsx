@@ -9,7 +9,7 @@ const HeaderMenu = () => {
         {navConfig.map((link) => (
           <li
             key={link.url}
-            className="header__item"
+            className="header-menu__item"
           >
             <RouterLink url={link.url}>{link.text}</RouterLink>
           </li>
