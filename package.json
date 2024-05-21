@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
+    "@rails/webpacker": "^5.4.4",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.2",
@@ -11,6 +12,8 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "dotenv-webpack": "^8.1.0",
     "esbuild": "^0.21.3",
     "prettier": "^3.2.5",
     "react": "^18.3.1",

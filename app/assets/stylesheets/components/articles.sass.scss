@@ -1,7 +1,7 @@
 @import "../utils/utils";
 
 .article-home-page {
-  box-shadow: 0 rem(8) rem(16) 0 #1C1E2214;
+  box-shadow: 0 rem(8) rem(16) 0 $shadow;
   border-radius: rem(8);
   background: #ffff;
   transition: box-shadow .3s ease 0s;
@@ -29,7 +29,7 @@
   }
   @media (any-hover: hover){
     &:hover {
-      box-shadow: rem(10) rem(30) rem(30) 0 #1C1E2214;
+      box-shadow: rem(10) rem(30) rem(30) 0 $shadow;
     }
   }
 }

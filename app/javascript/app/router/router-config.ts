@@ -1,5 +1,5 @@
 export const ROUTES = {
   layout: '/',
   adminPanel: '/admin-panel',
-  article: '/article',
+  articleById: ((id: null | number)  => (id ? `/articles/${id}` : "/articles/:articleId")),
 };

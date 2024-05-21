@@ -1,23 +1,31 @@
 import React, {FC} from 'react';
+import {RouterLink} from "../../../shared/components/Link/Link";
+import {ROUTES} from "../../../app/router/router-config";
 
 
 interface Props {
+    id: number
     imageUrl: string
     title: string
     description: string
 }
 
-const Article: FC<Props> = ({description, title, imageUrl}) => {
+const Article: FC<Props> = ({description, title, imageUrl, id}) => {
     return (
-        <article className="home-page__article article-home-page">
-            <div className="article-home-page__image">
-                <img src={imageUrl} alt="Header-Logo"/>
-            </div>
-            <div className="article-home-page__content">
-                <h3 className="article-home-page__title">{title}</h3>
-                <p className="article-home-page__description">{description}</p>
-            </div>
-        </article>
+      <article className="home-page__article article-home-page">
+        <RouterLink url={ROUTES.articleById(id)}>
+          <div className="article-home-page__image">
+            <img
+              src={imageUrl}
+              alt="Header-Logo"
+            />
+          </div>
+        </RouterLink>
+        <div className="article-home-page__content">
+          <h3 className="article-home-page__title">{title}</h3>
+          <p className="article-home-page__description">{description}</p>
+        </div>
+      </article>
     );
 };
 

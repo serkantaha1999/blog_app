@@ -3,6 +3,9 @@
   @include adaptiveValue("font-size", 45, 25);
   font-weight: 700;
   line-height: 150%;
+  &:not(:last-child) {
+      margin-bottom: em(15, 45);
+  }
 }
 
 .pagination {
@@ -41,5 +44,57 @@
         }
       }
     }
+  }
+}
+
+.page {
+  @include adaptiveValue("margin-top", 70, 50);
+  @include adaptiveValue("margin-bottom", 70, 50);
+}
+
+.input {
+  border: rem(1) solid $mainColor;
+  border-radius: rem(8);
+  padding: rem(8) rem(10);
+  outline: none;
+  @media (max-width:$mobileSmall) {
+    width: 100%;
+  }
+}
+
+.textarea {
+  border: rem(1) solid $mainColor;
+  border-radius: rem(8);
+  padding: rem(8) rem(10);
+  outline: none;
+  height: rem(200);
+  resize: none;
+}
+
+.label {
+  &__name {
+    display: block;
+    &:not(:last-child) {
+        margin-bottom: rem(8);
+     }
+  }
+}
+
+.submit-button {
+  display: inline-block;
+  background: $mainColor;
+  color: #ffffff;
+  width: rem(250);
+  height: rem(40);
+  border-radius: rem(8);
+  margin-left: auto;
+  transition: background .3s linear;
+  @media (any-hover: hover){
+      &:hover {
+          background: $hover-link-color;
+      }
+  }
+  @media (max-width:$mobileSmall) {
+    width: 100%;
   }
 }

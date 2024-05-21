@@ -5,7 +5,6 @@ const ArticleSkeleton = () => {
         <div className={"article-skeleton"}>
             <div className="article-skeleton__image"></div>
             <div className="article-skeleton__content">
-                <div className={"article-skeleton__category"}></div>
                 <div className="article-skeleton__title"></div>
                 <div className="article-skeleton__text"></div>
             </div>

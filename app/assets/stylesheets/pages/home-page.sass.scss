@@ -1,8 +1,6 @@
 @import "../utils/utils";
 
 .home-page {
-  @include adaptiveValue("margin-top", 70, 50);
-  @include adaptiveValue("margin-bottom", 70, 50);
   &__body {
     padding-top: rem(25);
     display: grid;
@@ -12,3 +10,7 @@
     }
   }
 }
+
+//Imports styles children components
+@import "../components/articles.sass.scss";
+@import "../components/articles-skeleton.sass.scss";
