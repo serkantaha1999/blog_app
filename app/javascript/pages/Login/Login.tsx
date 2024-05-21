@@ -27,7 +27,8 @@ const Login = () => {
             }
         } catch (err) {
             console.log(err);
-            alert("Something error!")
+            // @ts-ignore
+            window.alert("Something error!")
         }
     }
     if (isAuth) {

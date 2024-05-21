@@ -1,0 +1,12 @@
+@import "../utils/utils";
+
+.login-page__container {
+  max-width: rem(700);
+  margin: rem(100) auto;
+  padding: rem(25);
+  background: #f0f0f0;
+  border-radius: 10px;
+  .input {
+    width: 100%;
+  }
+}

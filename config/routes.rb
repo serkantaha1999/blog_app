@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
   root "articles#index"
 
+  get '/signed_in', to: 'articles#signed_in'
+
   resources :articles, only: [:index, :show]
 
   namespace :admin do

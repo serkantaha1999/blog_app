@@ -3,6 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   include RackSessionsFix
   respond_to :json
+  skip_before_action :verify_authenticity_token
 
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -21,24 +22,31 @@ class Users::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
 
-    token = generate_jwt(resource) # Assuming you have a method to generate a JWT
-
-    response.set_cookie(
-      :auth_token,
-      {
-        value: token,
-        httponly: true, # Prevents JavaScript access to the cookie
-        secure: Rails.env.production?, # Secure flag should be true in production
-        same_site: :strict # Adjust this as needed
-      }
-    )
-
+    token = generate_jwt(resource)
+    session[:user_id] = current_user.id
     render json: {
       status: {
         code: 200, message: 'Logged in successfully.',
-        data: { user: UserSerializer.new(current_user).serializable_hash[:data][:attributes] }
+        data: { user: UserSerializer.new(current_user).serializable_hash[:data][:attributes], token: }
       }
     }, status: :ok
+  end
+
+  def destroy
+    session.delete :user_id
+    head :no_content
+
+    if current_user
+      render json: {
+        status: 200,
+        message: 'Logged out successfully.'
+      }, status: :ok
+    else
+      render json: {
+        status: 401,
+        message: "Couldn't find an active session."
+      }, status: :unauthorized
+    end
   end
 
   protected
@@ -52,9 +60,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+
 
   # protected
 
