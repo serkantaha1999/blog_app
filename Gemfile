@@ -7,10 +7,10 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 gem "jsbundling-rails"
-gem "turbo-rails"
 gem "devise"
-gem "stimulus-rails"
 gem "cssbundling-rails"
+gem 'rack-cors'
+gem 'jsonapi-serializer'
 gem 'carrierwave', '~> 3.0'
 gem "jbuilder"
 gem "sassc-rails"
@@ -21,6 +21,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 group :development, :test do
+  gem "pry"
   gem "debug", platforms: %i[ mri windows ]
 end
 

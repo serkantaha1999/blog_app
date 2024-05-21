@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root "articles#index"
 
-  resource :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show]
 
   namespace :admin do
     root "articles#index", as: :admin_root
-    resource :articles
+    resources :articles
+  end
+
+  namespace :api do
+    resources :comments, only: [:create]
+    resources :articles, only: [:index, :show]
   end
 end
