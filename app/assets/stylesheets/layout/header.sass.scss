@@ -7,17 +7,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: rem(8);
+    > .router-link {
+     img {
+       @include adaptiveValue("width", 150, 80);
+       @media (max-width:$mobileSmall) {
+          transform: translateY(15%);
+       }
+     }
+    }
   }
 }
 
 .header-menu {
   &__list {
     display: flex;
-    gap: rem(15);
+    @include adaptiveValue("gap", 15, 8);
+    align-items: center;
   }
   &__item {
     > .router-link {
-      font-size: rem(16);
+      @include adaptiveValue("font-size", 16, 13);
       font-weight: 600;
       transition: color .4s linear;
       @media (any-hover: hover){
@@ -26,6 +36,9 @@
               color: #B00100;
           }
       }
+    }
+    > .submit-button {
+        width: rem(80);
     }
   }
 }

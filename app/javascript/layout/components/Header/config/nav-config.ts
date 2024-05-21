@@ -9,8 +9,4 @@ export const navConfig = [
         url: ROUTES.adminPanel,
         text: "Admin Panel"
     },
-    {
-        url: ROUTES.logOut,
-        text: "Log out"
-    }
 ]

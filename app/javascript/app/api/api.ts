@@ -57,6 +57,6 @@ export const loginAPI = {
         return await axios.get("/signed_in");
     },
     async logout() {
-        return await axios.delete("/users/sign_out delete")
+        return await axios.delete("/users/sign_out")
     }
 }
