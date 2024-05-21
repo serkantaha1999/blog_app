@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Label from "../../shared/components/Label/Label";
 import Input from "../../shared/components/Input/Input";
+import {emailValidator, passwordValidator} from "../../shared/utils/validationRules";
 import {useForm} from "react-hook-form";
 import Button from "../../shared/components/Button/Button";
 import {loginAPI} from "../../app/api/api";
@@ -19,6 +20,8 @@ const Login = () => {
         async function fetchCheckAuth() {
             try {
                 let response = await loginAPI.checkAuth();
+                console.log(response);
+
                 if (response.status === 200) {
                     setIsAuth(true)
                 }
@@ -52,10 +55,10 @@ const Login = () => {
                 <h1 className="login-page__title page-title">Login</h1>
                 <form className={"login-page__form"} noValidate>
                     <Label>
-                        <Input<LoginForm> name={"email"} register={register} rules={{}} placeholder={"Write your email"}/>
+                        <Input<LoginForm> name={"email"} register={register} rules={{emailValidator}} placeholder={"Write your email"}/>
                     </Label>
                     <Label>
-                        <Input<LoginForm> name={"password"} type={"password"} register={register} rules={{}} placeholder={"Write your password"}/>
+                        <Input<LoginForm> name={"password"} type={"password"} register={register} rules={{passwordValidator}} placeholder={"Write your password"}/>
                     </Label>
                     <Button>Login</Button>
                 </form>
