@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
 import CommentsPost from "./CommentsPost";
+import {Comments} from "../app/api/api";
 
-const CommentsPosts = () => {
+interface Props {
+    comments: Comments[]
+}
+
+const CommentsPosts: FC<Props> = ({comments}) => {
     return (
         <section className={"article-card__comments comments-posts"}>
-            <CommentsPost/>
-            <CommentsPost/>
-            <CommentsPost/>
-            <CommentsPost/>
-            <CommentsPost/>
+            {comments.map(comment => <CommentsPost key={comment.article_id} name={comment.author} text={comment.content}/>)}
         </section>
     );
 };

@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {nameValidator} from "../shared/utils/validationRules";
 import Button from "../shared/components/Button/Button";
 import Textarea from "../shared/components/Textarea/Textarea";
-import {articlesAPI} from "../app/api/api";
+import {articlesAPI, Comments} from "../app/api/api";
 
 interface FormComments {
     author: string
@@ -14,9 +14,10 @@ interface FormComments {
 
 interface Props {
     articleId: number
+    addedComments: (comment: Comments) => void
 }
 
-const CommentsForm: FC<Props> = ({articleId}) => {
+const CommentsForm: FC<Props> = ({articleId, addedComments}) => {
     const {register, handleSubmit,  formState:{errors}} = useForm<FormComments>({
         mode: "onChange"
     });
@@ -25,7 +26,11 @@ const CommentsForm: FC<Props> = ({articleId}) => {
         let comment = {article_id: articleId, ...data}
         try {
             let response = await articlesAPI.setComments(comment)
+            if (response.status === 200) {
+                addedComments(comment)
+            }
         } catch (error) {
+            alert("Something error! Please try again!")
             console.log(error)
         }
     }

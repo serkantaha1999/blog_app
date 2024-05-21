@@ -17,7 +17,13 @@ export interface ArticleAPI {
 
 export interface ArticleByIdAPI {
     article: Articles
-    comments: string[]
+    comments: Comments[]
+}
+
+export interface Comments {
+    article_id: number
+    author: string
+    content: string
 }
 
 export const instance = axios.create({
@@ -31,7 +37,7 @@ export const articlesAPI = {
     async getArticleById(id: number) {
         return await instance.get<ArticleByIdAPI>(`articles/${id}`)
     },
-    async setComments(comment: any) {
+    async setComments(comment: Comments) {
         return await instance.post(`comments`, comment)
     }
 }

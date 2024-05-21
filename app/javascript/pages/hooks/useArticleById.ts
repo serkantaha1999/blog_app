@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ArticleByIdAPI, articlesAPI} from '../../app/api/api';
+import {ArticleByIdAPI, articlesAPI, Comments} from '../../app/api/api';
 import {useParams} from 'react-router-dom';
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
     },
     created_at: '',
   },
-  comments: [],
+  comments: [] as Comments[],
 };
 
 interface ArticleByIdData extends ArticleByIdAPI {}
@@ -34,7 +34,7 @@ export const useArticleById = () => {
             }
         }
         fetchArticleCard()
-    }, [])
+    }, [articleId])
     
-    return {articleCard, isLoading}
+    return {articleCard, isLoading, setArticleCard}
 }

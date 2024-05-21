@@ -3,9 +3,16 @@ import {useArticleById} from './hooks/useArticleById';
 import {formatDate} from '../shared/utils/utils';
 import CommentsForm from './CommentsForm';
 import CommentsPosts from './CommentsPosts';
+import {Comments} from "../app/api/api";
 
 const ArticleCardPage = () => {
-  const {articleCard, isLoading} = useArticleById();
+  const {articleCard, isLoading, setArticleCard} = useArticleById();
+  const addedComments = (comment: Comments) => {
+      setArticleCard(prevState => ({
+          ...prevState,
+          comments: [...prevState.comments, comment]
+      }))
+  }
   return (
     <section className="page article-card">
       <div className="article-card__container">
@@ -24,8 +31,8 @@ const ArticleCardPage = () => {
               />
             </div>
             <p className="article-card__description">{articleCard.article.content}</p>
-            <CommentsForm articleId={articleCard.article.id} />
-            <CommentsPosts />
+            <CommentsForm addedComments={addedComments} articleId={articleCard.article.id} />
+            <CommentsPosts comments={articleCard.comments}/>
           </div>
         ) : null}
       </div>
