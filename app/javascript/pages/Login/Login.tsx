@@ -34,7 +34,6 @@ const Login = () => {
         setIsAuth(true);
       }
     } catch (err) {
-      alert('Something error!Please try again');
       console.log(err);
     }
   };

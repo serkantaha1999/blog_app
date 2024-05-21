@@ -33,20 +33,17 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def destroy
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    set_flash_message! :notice, :signed_out if signed_out
+    yield if block_given?
     session.delete :user_id
-    head :no_content
 
-    if current_user
-      render json: {
-        status: 200,
-        message: 'Logged out successfully.'
-      }, status: :ok
-    else
-      render json: {
-        status: 401,
-        message: "Couldn't find an active session."
-      }, status: :unauthorized
-    end
+    render json: {
+      status: {
+        code: 204,
+        success: true
+      }
+    }
   end
 
   protected

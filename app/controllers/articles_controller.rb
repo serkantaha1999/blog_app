@@ -4,10 +4,8 @@ class ArticlesController < ApplicationController
   def show; end
 
   def signed_in
-    if current_user.nil?
-      render json: { status: :unauthorized }, status: 401
-    else
-      render json: { status: :ok }, status: 200
-    end
+    return render json: { status: :ok }, status: 200 if current_user.present?
+
+    render json: { 'success' => false }, status: 401
   end
 end
