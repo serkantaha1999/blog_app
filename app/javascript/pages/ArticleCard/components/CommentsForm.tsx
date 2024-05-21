@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
-import Label from "../shared/components/Label/Label";
-import Input from "../shared/components/Input/Input";
+import Label from "../../../shared/components/Label/Label";
+import Input from "../../../shared/components/Input/Input";
 import {useForm} from "react-hook-form";
-import {messageValidator, nameValidator} from "../shared/utils/validationRules";
-import Button from "../shared/components/Button/Button";
-import Textarea from "../shared/components/Textarea/Textarea";
-import {articlesAPI, Comments} from "../app/api/api";
+import {messageValidator, nameValidator} from "../../../shared/utils/validationRules";
+import Button from "../../../shared/components/Button/Button";
+import Textarea from "../../../shared/components/Textarea/Textarea";
+import {articlesAPI, Comments} from "../../../app/api/api";
 
 interface FormComments {
     author: string
@@ -30,7 +30,8 @@ const CommentsForm: FC<Props> = ({articleId, addedComments}) => {
                 addedComments(comment)
             }
         } catch (error) {
-            alert("Something error! Please try again!")
+            // @ts-ignore
+            window.alert("Something error! Please try again!")
             console.log(error)
         }
     }

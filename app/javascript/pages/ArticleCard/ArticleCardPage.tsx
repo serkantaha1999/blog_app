@@ -1,9 +1,9 @@
 import React from 'react';
-import {useArticleById} from './hooks/useArticleById';
-import {formatDate} from '../shared/utils/utils';
-import CommentsForm from './CommentsForm';
-import CommentsPosts from './CommentsPosts';
-import {Comments} from "../app/api/api";
+import {useArticleById} from '../hooks/useArticleById';
+import {formatDate} from '../../shared/utils/utils';
+import CommentsForm from './components/CommentsForm';
+import CommentsPosts from './components/CommentsPosts';
+import {Comments} from "../../app/api/api";
 
 const ArticleCardPage = () => {
   const {articleCard, isLoading, setArticleCard} = useArticleById();

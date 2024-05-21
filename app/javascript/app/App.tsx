@@ -3,7 +3,7 @@ import React from 'react';
 import HomePage from '../pages/Home/HomePage';
 import {ROUTES} from './router/router-config';
 import AdminPanelPage from '../pages/AdminPanelPage';
-import ArticleCardPage from '../pages/ArticleCardPage';
+import ArticleCardPage from '../pages/ArticleCard/ArticleCardPage';
 import MainLayout from "../layout/MainLayout";
 
 export const App = () => {
