@@ -1,7 +1,7 @@
 import React, {HTMLInputTypeAttribute} from 'react';
 import {FieldValues, Path, UseFormRegister} from 'react-hook-form';
 
-export interface Props<T extends FieldValues> {
+interface Props<T extends FieldValues> {
   name: Path<T>;
   id?: string;
   register: UseFormRegister<T>;

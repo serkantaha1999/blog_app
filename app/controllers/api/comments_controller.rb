@@ -1,6 +1,5 @@
 class Api::CommentsController < ApplicationController
   def create
-    binding.pry
     comment = Comment.new(comment_params)
 
     if comment.save

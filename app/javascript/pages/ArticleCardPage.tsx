@@ -24,7 +24,7 @@ const ArticleCardPage = () => {
               />
             </div>
             <p className="article-card__description">{articleCard.article.content}</p>
-            <CommentsForm />
+            <CommentsForm articleId={articleCard.article.id} />
             <CommentsPosts />
           </div>
         ) : null}

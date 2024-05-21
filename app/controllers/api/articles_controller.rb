@@ -14,7 +14,7 @@ class Api::ArticlesController < ApplicationController
   end
 
   def show
-    render json: { article:, comments: @article.comments }
+    render json: { article: @article, comments: @article.comments }
   end
 
   def create
