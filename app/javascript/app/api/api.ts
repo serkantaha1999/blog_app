@@ -26,6 +26,13 @@ export interface Comments {
     content: string
 }
 
+export interface UserInfo {
+  user: {
+    email: string
+    password: string
+}
+}
+
 export const instance = axios.create({
     baseURL: "/api/",
 })
@@ -39,5 +46,11 @@ export const articlesAPI = {
     },
     async setComments(comment: Comments) {
         return await instance.post(`comments`, comment)
+    }
+}
+
+export const loginAPI = {
+    async setLogin(userInfo: UserInfo) {
+        return await axios.post(`/users/sign_in`, userInfo)
     }
 }
