@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {RouterLink} from "../../../shared/components/Link/Link";
+import {RouterLink} from "../Link/Link";
 import {ROUTES} from "../../../app/router/router-config";
 
 

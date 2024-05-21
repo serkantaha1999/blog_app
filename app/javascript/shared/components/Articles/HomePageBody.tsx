@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import Article from './Article';
 import ArticleSkeleton from './ArticleSkeleton';
 import {Articles} from '../../../app/api/api';
-import {ARTICLES_SKELETON_COUNT} from '../../../shared/utils/constants';
+import {ARTICLES_SKELETON_COUNT} from '../../utils/constants';
 
 interface Props {
   articles: Articles[];

@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 import Pagination from '../../shared/components/Pagination/Pagination';
 import {useArticles} from '../hooks/useArticles';
 import {PAGE_SIZE} from '../../shared/utils/constants';
-import HomePageBody from './components/HomePageBody';
+import HomePageBody from '../../shared/components/Articles/HomePageBody';
 
 const HomePage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
