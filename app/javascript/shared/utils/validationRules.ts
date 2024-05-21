@@ -6,21 +6,21 @@ export const lowerLetter = /^(?=.*[a-z])/
 export const nameValidator: RegisterOptions = {
     required: "Name is required! Please write your name!",
     maxLength: {
-        value: 10,
-        message: "Name is too long! Please enter valid name!"
+        value: 20,
+        message: "The author's name is too long! Please enter valid name!"
     },
     minLength: {
         value: 3,
-        message: "Name is too short! Please enter valid name!"
+        message: "The author's name is too short! Please enter valid name!"
     },
     validate: {
-        hasUpperCase: (value: string) => upperLetter.test(value) || "Name must contain one or more Uppercase letters!",
-        hasLowerCase: (value: string) => lowerLetter.test(value) || "Name must contain one or more Lowercase letters!",
+        hasUpperCase: (value: string) => upperLetter.test(value) || "The author's name must contain one or more Uppercase letters!",
+        hasLowerCase: (value: string) => lowerLetter.test(value) || "The author's name must contain one or more Lowercase letters!",
     }
 }
 
-export const textareaValidator = {
-    required: 'Textarea is required.Please write your text!',
+export const messageValidator = {
+    required: 'Message is required. Please write your text!',
     minLength: {
         value: 10,
         message: 'Message must be at least 10 characters long'

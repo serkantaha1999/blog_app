@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import Label from "../shared/components/Label/Label";
 import Input from "../shared/components/Input/Input";
 import {useForm} from "react-hook-form";
-import {nameValidator} from "../shared/utils/validationRules";
+import {messageValidator, nameValidator} from "../shared/utils/validationRules";
 import Button from "../shared/components/Button/Button";
 import Textarea from "../shared/components/Textarea/Textarea";
 import {articlesAPI, Comments} from "../app/api/api";
@@ -41,7 +41,7 @@ const CommentsForm: FC<Props> = ({articleId, addedComments}) => {
                 <Input<FormComments> name={"author"} rules={nameValidator} register={register} placeholder={"Write your name"}/>
             </Label>
             <Label errors={errors.content?.message}>
-                <Textarea<FormComments> name={"content"} rules={nameValidator} register={register} placeholder={"Comment..."}/>
+                <Textarea<FormComments> name={"content"} rules={messageValidator} register={register} placeholder={"Write your comment..."}/>
             </Label>
             <Button>Submit</Button>
         </form>
