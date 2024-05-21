@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :comments, only: [:create]
-    resources :articles, only: [:index, :show]
+    resources :articles, only: [:index, :show, :create, :destroy, :update]
   end
 end

@@ -1,5 +1,6 @@
 admin = User.create(email: 'test@test.com', password: '12345678', role: 1)
 
+authors = ['Khrystyna Mykol', 'Oleksii Loren', 'Dasha Ov', 'Ostap Nerdenko', 'Bodya Kotenko']
 json_data = <<JSON
 {
   "news": [
@@ -70,10 +71,18 @@ JSON
 parsed_data = JSON.parse(json_data)
 
 parsed_data['news'].each do |article_data|
-  Article.create(
+  article = Article.create(
     title: article_data['title'],
     content: article_data['text'],
     image: File.open("app#{article_data['imageUrl']}"),
     user_id: admin.id
   )
+
+  5.times do |i|
+    Comment.create(
+      author: authors[i],
+      content: 'So interesting article',
+      article_id: article.id
+    )
+  end
 end
