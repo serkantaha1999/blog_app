@@ -10,6 +10,7 @@ gem "jsbundling-rails"
 gem "devise"
 gem "cssbundling-rails"
 gem 'rack-cors'
+gem 'jwt'
 gem 'jsonapi-serializer'
 gem 'carrierwave', '~> 3.0'
 gem "jbuilder"

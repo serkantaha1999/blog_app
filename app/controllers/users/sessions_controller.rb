@@ -20,6 +20,19 @@ class Users::SessionsController < Devise::SessionsController
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
+
+    token = generate_jwt(resource) # Assuming you have a method to generate a JWT
+
+    response.set_cookie(
+      :auth_token,
+      {
+        value: token,
+        httponly: true, # Prevents JavaScript access to the cookie
+        secure: Rails.env.production?, # Secure flag should be true in production
+        same_site: :strict # Adjust this as needed
+      }
+    )
+
     render json: {
       status: {
         code: 200, message: 'Logged in successfully.',
@@ -32,6 +45,10 @@ class Users::SessionsController < Devise::SessionsController
 
   def sign_in_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def generate_jwt(user)
+    JWT.encode({ user_id: user.id, exp: 24.hours.from_now.to_i }, Rails.application.secrets.secret_key_base)
   end
 
   # DELETE /resource/sign_out
