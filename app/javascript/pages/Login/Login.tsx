@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Label from "../../shared/components/Label/Label";
 import Input from "../../shared/components/Input/Input";
 import {useForm} from "react-hook-form";
 import Button from "../../shared/components/Button/Button";
 import {loginAPI} from "../../app/api/api";
-
+import { Navigate } from 'react-router-dom';
+import {ROUTES} from "../../app/router/router-config";
 interface LoginForm {
     email: string
     password: string
@@ -12,6 +13,7 @@ interface LoginForm {
 
 const Login = () => {
     const {register, handleSubmit} = useForm<LoginForm>()
+    const [isAuth, setIsAuth] = useState(false);
     const onSubmit = async (data: LoginForm) => {
         const userInfo = {
             user: {
@@ -20,13 +22,17 @@ const Login = () => {
         }
         try {
             let response = await loginAPI.setLogin(userInfo)
-            console.log(response)
+            if (response.status === 200) {
+                setIsAuth(true)
+            }
         } catch (err) {
             console.log(err);
             alert("Something error!")
         }
     }
-
+    if (isAuth) {
+        return <Navigate to={ROUTES.adminPanel}/>
+    }
     return (
         <div onSubmit={handleSubmit(onSubmit)} className={"page login-page"}>
             <div className="login-page__container">
