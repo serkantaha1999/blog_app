@@ -18,23 +18,23 @@ const initialState = {
 interface ArticleByIdData extends ArticleByIdAPI {}
 
 export const useArticleById = () => {
-    const [articleCard, setArticleCard] = useState<ArticleByIdData>(initialState);
-    const [isLoading, setIsLoading] = useState(true)
-    const {articleId} = useParams()
-    React.useEffect(() => {
-        async function fetchArticleCard() {
-            try {
-                setIsLoading(true)
-                let {data} = await articlesAPI.getArticleById(Number(articleId))
-                setArticleCard(data)
-                setIsLoading(false)
-            } catch (err) {
-                console.log(err)
-                alert("Something error! Please, try again!")
-            }
-        }
-        fetchArticleCard()
-    }, [articleId])
-    
-    return {articleCard, isLoading, setArticleCard}
-}
+  const [articleCard, setArticleCard] = useState<ArticleByIdData>(initialState);
+  const [isLoading, setIsLoading] = useState(true);
+  const {articleId} = useParams();
+  React.useEffect(() => {
+    async function fetchArticleCard() {
+      try {
+        setIsLoading(true);
+        let {data} = await articlesAPI.getArticleById(Number(articleId));
+        setArticleCard(data);
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+        alert('Something error! Please, try again!');
+      }
+    }
+    fetchArticleCard();
+  }, [articleId]);
+
+  return {articleCard, isLoading, setArticleCard};
+};

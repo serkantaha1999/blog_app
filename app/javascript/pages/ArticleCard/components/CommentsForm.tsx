@@ -8,19 +8,24 @@ import Textarea from "../../../shared/components/Textarea/Textarea";
 import {articlesAPI, Comments} from "../../../app/api/api";
 
 interface FormComments {
-    author: string
-    content: string
+  author: string;
+  content: string;
 }
 
 interface Props {
-    articleId: number
-    addedComments: (comment: Comments) => void
+  articleId: number;
+  addedComments: (comment: Comments) => void;
 }
 
 const CommentsForm: FC<Props> = ({articleId, addedComments}) => {
-    const {register, handleSubmit,  formState:{errors}} = useForm<FormComments>({
-        mode: "onChange"
-    });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: {errors},
+  } = useForm<FormComments>({
+    mode: 'onChange',
+  });
 
     const onSubmit = async (data: FormComments) => {
         let comment = {article_id: articleId, ...data}
@@ -34,19 +39,45 @@ const CommentsForm: FC<Props> = ({articleId, addedComments}) => {
             window.alert("Something error! Please try again!")
             console.log(error)
         }
+  const onSubmit = async (data: FormComments) => {
+    let comment = {article_id: articleId, ...data};
+    try {
+      let response = await articlesAPI.setComments(comment);
+      if (response.status === 200) {
+        addedComments(comment);
+        reset();
+      }
+    } catch (error) {
+      alert('Something error! Please try again!');
+      console.log(error);
     }
+  };
 
-    return (
-        <form onSubmit={handleSubmit(onSubmit)} className={"article-card__form comments-form"} noValidate action="">
-            <Label errors={errors.author?.message}>
-                <Input<FormComments> name={"author"} rules={nameValidator} register={register} placeholder={"Write your name"}/>
-            </Label>
-            <Label errors={errors.content?.message}>
-                <Textarea<FormComments> name={"content"} rules={messageValidator} register={register} placeholder={"Write your comment..."}/>
-            </Label>
-            <Button>Submit</Button>
-        </form>
-    );
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={'article-card__form comments-form'}
+      noValidate
+    >
+      <Label errors={errors.author?.message}>
+        <Input<FormComments>
+          name={'author'}
+          rules={nameValidator}
+          register={register}
+          placeholder={'Write your name'}
+        />
+      </Label>
+      <Label errors={errors.content?.message}>
+        <Textarea<FormComments>
+          name={'content'}
+          rules={messageValidator}
+          register={register}
+          placeholder={'Write your comment...'}
+        />
+      </Label>
+      <Button>Submit</Button>
+    </form>
+  );
 };
 
 export default CommentsForm;
