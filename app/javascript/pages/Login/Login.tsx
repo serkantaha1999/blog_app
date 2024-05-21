@@ -4,7 +4,7 @@ import Input from "../../shared/components/Input/Input";
 import {useForm} from "react-hook-form";
 import Button from "../../shared/components/Button/Button";
 import {loginAPI} from "../../app/api/api";
-import { Navigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {ROUTES} from "../../app/router/router-config";
 interface LoginForm {
     email: string
@@ -12,6 +12,7 @@ interface LoginForm {
 }
 
 const Login = () => {
+    const navigate = useNavigate()
     const {register, handleSubmit} = useForm<LoginForm>()
     const [isAuth, setIsAuth] = useState(false);
     const onSubmit = async (data: LoginForm) => {
@@ -32,7 +33,7 @@ const Login = () => {
         }
     }
     if (isAuth) {
-        return <Navigate to={ROUTES.adminPanel}/>
+        navigate(ROUTES.adminPanel)
     }
     return (
         <div onSubmit={handleSubmit(onSubmit)} className={"page login-page"}>
