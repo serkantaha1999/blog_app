@@ -13,7 +13,7 @@ const HomePage: FC = () => {
     async function fetchArticles() {
       setIsLoading(true);
       let {data} = await articlesAPI.getArticles();
-      setArticles(data);
+      setArticles(data.articles);
       setIsLoading(false);
     }
     fetchArticles();
@@ -28,7 +28,7 @@ const HomePage: FC = () => {
                 <Article
                   key={article.id}
                   description={article.content}
-                  imageUrl={article.image}
+                  imageUrl={article.image.url}
                   title={article.title}
                 />
               ))

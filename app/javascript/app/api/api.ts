@@ -16,6 +16,6 @@ export const instance = axios.create({
 
 export const articlesAPI = {
     async getArticles(currentPage = 1, pageSize = 5) {
-        return await instance.get(`/articles??limit=${pageSize}&page=${currentPage}`)
+        return await instance.get(`api/articles?limit=${pageSize}&page=${currentPage}`)
     }
 }

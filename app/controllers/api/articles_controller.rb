@@ -6,9 +6,9 @@ class Api::ArticlesController < ApplicationController
 
     if limit && page
       selected_articles = articles.offset(page * limit).limit(limit)
-      render json: { :articles => selected_articles, :limit => articles.count }
+      render json: { articles: selected_articles, limit: articles.count }
     else
-      render json: { :articles => articles, :limit => articles.count }
+      render json: { articles:, limit: articles.count }
     end
   end
 
