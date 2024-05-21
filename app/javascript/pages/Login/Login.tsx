@@ -15,6 +15,19 @@ const Login = () => {
     const navigate = useNavigate()
     const {register, handleSubmit} = useForm<LoginForm>()
     const [isAuth, setIsAuth] = useState(false);
+    React.useEffect(() => {
+        async function fetchCheckAuth() {
+            try {
+                let response = await loginAPI.checkAuth();
+                if (response.status === 200) {
+                    setIsAuth(true)
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        fetchCheckAuth()
+    }, [])
     const onSubmit = async (data: LoginForm) => {
         const userInfo = {
             user: {
@@ -22,14 +35,12 @@ const Login = () => {
             }
         }
         try {
-            let response = await loginAPI.setLogin(userInfo)
+            let response = await loginAPI.login(userInfo)
             if (response.status === 200) {
                 setIsAuth(true)
             }
         } catch (err) {
             console.log(err);
-            // @ts-ignore
-            window.alert("Something error!")
         }
     }
     if (isAuth) {

@@ -50,7 +50,13 @@ export const articlesAPI = {
 }
 
 export const loginAPI = {
-    async setLogin(userInfo: UserInfo) {
+    async login(userInfo: UserInfo) {
         return await axios.post(`/users/sign_in`, userInfo)
+    },
+    async checkAuth() {
+        return await axios.get("/signed_in");
+    },
+    async logout() {
+        return await axios.delete("/users/sign_out delete")
     }
 }
