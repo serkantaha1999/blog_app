@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {FC, ReactNode} from 'react';
 
-const Button = () => {
-    return <button className={"submit-button"}>Submit</button>
+interface Props {
+    children: ReactNode
+}
+
+const Button: FC<Props> = ({children}) => {
+    return <button className={'submit-button'}>{children}</button>;
 };
 
 export default Button;

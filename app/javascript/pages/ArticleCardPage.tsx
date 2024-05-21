@@ -1,9 +1,8 @@
 import React from 'react';
 import {useArticleById} from './hooks/useArticleById';
 import {formatDate} from '../shared/utils/utils';
-import Input from '../shared/components/Input/Input';
-import Label from '../shared/components/Label/Label';
 import CommentsForm from './CommentsForm';
+import CommentsPosts from './CommentsPosts';
 
 const ArticleCardPage = () => {
   const {articleCard, isLoading} = useArticleById();
@@ -26,6 +25,7 @@ const ArticleCardPage = () => {
             </div>
             <p className="article-card__description">{articleCard.article.content}</p>
             <CommentsForm />
+            <CommentsPosts />
           </div>
         ) : null}
       </div>

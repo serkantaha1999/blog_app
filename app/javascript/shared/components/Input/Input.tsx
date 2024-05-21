@@ -1,16 +1,24 @@
-import React, {FC, HTMLInputTypeAttribute} from 'react';
+import React, {HTMLInputTypeAttribute} from 'react';
+import {FieldValues, Path, UseFormRegister} from 'react-hook-form';
 
-interface Props {
-    type?: HTMLInputTypeAttribute
-    value?: string
-    placeholder?: string
-    // onChange: (value: string) => void
+export interface Props<T extends FieldValues> {
+  name: Path<T>;
+  id?: string;
+  register: UseFormRegister<T>;
+  type?: HTMLInputTypeAttribute;
+  placeholder?: string;
+  rules: FieldValues;
 }
 
-const Input: FC<Props> = ({value, placeholder, type= "text"}) => {
-    return (
-        <input type={type} className={"input"} placeholder={placeholder}/>
-    );
-};
+function Input<T extends FieldValues>({ register, placeholder, rules, name, id, type = "text"}: Props<T>) {
+    return <input
+        id={id}
+        placeholder={placeholder}
+        {...register(name, rules)}
+        type={type}
+        className={"input"}
+    />
+}
+
 
 export default Input;

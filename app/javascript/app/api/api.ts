@@ -30,5 +30,8 @@ export const articlesAPI = {
     },
     async getArticleById(id: number) {
         return await instance.get<ArticleByIdAPI>(`articles/${id}`)
+    },
+    async setComments(comment: any) {
+        return await instance.post(`comments`, comment)
     }
 }

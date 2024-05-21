@@ -78,6 +78,19 @@
         margin-bottom: rem(8);
      }
   }
+  &__error {
+    padding-top: rem(7);
+    color: red;
+    height: rem(35);
+  }
+  &.error {
+    > input {
+      border-color: red;
+      &::placeholder {
+        color: red;
+      }
+    }
+  }
 }
 
 .submit-button {
