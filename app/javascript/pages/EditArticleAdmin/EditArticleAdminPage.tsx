@@ -3,6 +3,7 @@ import AdminForm from '../../shared/components/AdminForm/AdminForm';
 import {useArticleById} from "../hooks/useArticleById";
 import {useArticles} from "../../shared/context/ArticlesContext";
 import {useParams} from "react-router-dom";
+import {Loader} from "../../shared/components/Loader/Loader";
 
 const EditArticleAdminPage = () => {
     const {articleCard, isLoading} = useArticleById()
@@ -17,7 +18,7 @@ const EditArticleAdminPage = () => {
                 <h1 className="home-page__title page-title">Edit Article</h1>
                 {!isLoading ? (
                     <AdminForm onSubmit={onSubmit}  buttonText={"Update"} articleCard={articleCard.article}/>
-                ) : null}
+                ) : <Loader/>}
             </div>
         </div>
     );
