@@ -19,7 +19,7 @@ const Article: FC<Props> = ({description, title, imageUrl, id}) => {
     const renderAdminSettings = () => {
       if (location.pathname === ROUTES.adminPanel) {
         return (
-          <div className="article-home-page__admin">
+          <div className="article-page__admin">
               <ButtonLink theme={"edit"} url={ROUTES.editArticleById(id)}>Edit</ButtonLink>
             <Button onClick={() => deleteArticle(id)} theme={'delete'}>Delete</Button>
           </div>
@@ -27,18 +27,18 @@ const Article: FC<Props> = ({description, title, imageUrl, id}) => {
       }
     };
     return (
-      <article className="home-page__article article-home-page">
+      <article className="home-page__article article-page">
         <RouterLink url={ROUTES.articleById(id)}>
-          <div className="article-home-page__image">
+          <div className="article-page__image">
             <img
               src={imageUrl}
               alt="Header-Logo"
             />
           </div>
         </RouterLink>
-        <div className="article-home-page__content">
-          <h3 className="article-home-page__title">{title}</h3>
-          <p className="article-home-page__description">{description}</p>
+        <div className="article-page__content">
+          <h3 className="article-page__title">{title}</h3>
+          <p className="article-page__description">{description}</p>
         </div>
           {renderAdminSettings()}
       </article>

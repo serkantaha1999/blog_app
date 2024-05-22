@@ -17,7 +17,7 @@ const LoginPage = () => {
     handleSubmit,
     formState: {errors},
   } = useForm<LoginForm>();
-  const {login} = useAuth()
+  const {login} = useAuth();
   return (
     <div
       onSubmit={handleSubmit(login)}

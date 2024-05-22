@@ -44,7 +44,17 @@ export const adminPanelAPI = {
     });
   },
   async updateArticle(id: number, article: ArticleAdmin) {
-    return await instance.put(`/articles/${id}`, article);
+    const newData = {
+      article: {
+        ...article,
+        image: article.image![0],
+      },
+    };
+    return await instance.put(`/articles/${id}`, newData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   },
   async deleteArticle(id: number) {
     return await instance.delete(`/articles/${id}`);

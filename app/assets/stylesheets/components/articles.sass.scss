@@ -1,6 +1,6 @@
 @import "../utils/utils";
 
-.article-home-page {
+.article-page {
   display: flex;
   flex-direction: column;
   box-shadow: 0 rem(8) rem(16) 0 $shadow;
@@ -8,7 +8,7 @@
   background: #ffff;
   transition: box-shadow .3s ease 0s;
   &:only-child {
-    .article-home-page {
+    .article-page {
       &__image img {
         height: auto;
       }

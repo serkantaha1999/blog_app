@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {ArticleByIdAPI, articlesAPI, Comments} from '../../app/api/api';
 import {useParams} from 'react-router-dom';
+import {ArticleByIdAPI, Comments} from "../../app/api/api-types";
+import {articlesAPI} from "../../app/api/api";
 
 const initialState = {
   article: {

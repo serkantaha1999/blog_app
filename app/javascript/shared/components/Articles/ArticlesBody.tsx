@@ -1,18 +1,17 @@
 import React, {FC} from 'react';
 import Article from './Article';
 import ArticleSkeleton from './ArticleSkeleton';
-import {Articles} from '../../../app/api/api';
 import {ARTICLES_SKELETON_COUNT} from '../../utils/constants';
-import Button from "../Button/Button";
+import {Articles} from '../../../app/api/api-types';
 
 interface Props {
   articles: Articles[];
   isLoading?: boolean;
 }
 
-const HomePageBody: FC<Props> = ({articles, isLoading = false}) => {
+const ArticlesBody: FC<Props> = ({articles, isLoading = false}) => {
   return (
-    <div className="home-page__body">
+    <div className="articles-body">
       {!isLoading
         ? articles.map((article) => (
             <Article
@@ -28,4 +27,4 @@ const HomePageBody: FC<Props> = ({articles, isLoading = false}) => {
   );
 };
 
-export default HomePageBody;
+export default ArticlesBody;

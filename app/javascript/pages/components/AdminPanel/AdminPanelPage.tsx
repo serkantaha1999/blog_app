@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import Pagination from '../../../shared/components/Pagination/Pagination';
 import {PAGE_SIZE} from '../../../shared/utils/constants';
-import HomePageBody from '../../../shared/components/Articles/HomePageBody';
+import ArticlesBody from '../../../shared/components/Articles/ArticlesBody';
 import {useArticles} from '../../../shared/context/ArticlesContext';
 import {ROUTES} from '../../../app/router/router-config';
 import ButtonLink from '../../../shared/components/ButtonLink/ButtonLink';
@@ -21,8 +21,8 @@ const AdminPanelPage: FC = () => {
     <section className={'page admin-panel-page'}>
       <div className="admin-panel-page__container">
         <h1 className="admin-panel-page__title page-title">Admin Panel | Articles</h1>
-        <ButtonLink url={ROUTES.editArticles}>Add New Articles</ButtonLink>
-        <HomePageBody
+        <ButtonLink url={ROUTES.newArticles}>Add New Articles</ButtonLink>
+        <ArticlesBody
           articles={data.articles}
           isLoading={isLoading}
         />

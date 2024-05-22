@@ -1,14 +1,13 @@
 import React, {FC, useState} from 'react';
-import Label from "../Label/Label";
-import {CiImageOn} from "react-icons/ci";
-import Input from "../Input/Input";
-import {fileValidator, textareaValidator} from "../../utils/validationRules";
-import Textarea from "../Textarea/Textarea";
-import Button from "../Button/Button";
-import {useForm} from "react-hook-form";
-import {useArticles} from "../../context/ArticlesContext";
+import Label from '../Label/Label';
+import {CiImageOn} from 'react-icons/ci';
+import Input from '../Input/Input';
+import Textarea from '../Textarea/Textarea';
+import Button from '../Button/Button';
+import {useForm, UseFormReset} from 'react-hook-form';
+import {Articles} from '../../../app/api/api-types';
 
-interface ArticleAdmitForm {
+export interface AdminFormType {
     image: FileList | null;
     title: string;
     content: string;
@@ -16,13 +15,14 @@ interface ArticleAdmitForm {
 
 interface Props {
     buttonText: string
+    articleCard?: Articles
+    onSubmit: (data: AdminFormType) => void
 }
 
-const AdminForm: FC<Props> = ({buttonText}) => {
-    const {register, handleSubmit, formState: {errors}} = useForm<ArticleAdmitForm>({
+const AdminForm: FC<Props> = ({buttonText, onSubmit, articleCard = null}) => {
+    const {register, handleSubmit, reset, setValue, formState: {errors}} = useForm<AdminFormType>({
         mode: "onChange"
     });
-    const {addArticle} = useArticles()
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
@@ -36,8 +36,16 @@ const AdminForm: FC<Props> = ({buttonText}) => {
             setImagePreview(null);
         }
     };
+    React.useEffect(() => {
+        if (articleCard) {
+            setValue("title", articleCard.title)
+            setValue("content", articleCard.content)
+            setImagePreview(articleCard.image?.url || null);
+        }
+    }, [])
+    
     return (
-        <form onSubmit={handleSubmit(addArticle)} className="article-admin-page__form">
+        <form onSubmit={handleSubmit((data: AdminFormType) => onSubmit(data))} className="article-admin-page__form">
             <div className={'article-admin-page__form-inner'}>
                 <div className={'article-admin-page__image'}>
                     <Label>
@@ -51,30 +59,28 @@ const AdminForm: FC<Props> = ({buttonText}) => {
                                 />
                             )}
                         </div>
-                        <Input<ArticleAdmitForm>
+                        <Input<AdminFormType>
                             type={'file'}
                             name={'image'}
                             onChange={handleFileChange}
                             register={register}
-                            rules={fileValidator}
+                            rules={{}}
                         />
                     </Label>
                 </div>
                 <div className={'article-admin-page__block'}>
                     <Label>
-                        <Input<ArticleAdmitForm>
+                        <Input<AdminFormType>
                             type={'text'}
                             name={'title'}
                             register={register}
-                            rules={{}}
                             placeholder={'Write title...'}
                         />
                     </Label>
                     <Label errors={errors.content?.message}>
-                        <Textarea<ArticleAdmitForm>
+                        <Textarea<AdminFormType>
                             name={'content'}
                             register={register}
-                            rules={textareaValidator}
                             placeholder={'Write content...'}
                         />
                     </Label>

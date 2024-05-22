@@ -7,7 +7,7 @@ interface Props<T extends FieldValues> {
   register: UseFormRegister<T>;
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
-  rules: FieldValues;
+  rules?: FieldValues;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

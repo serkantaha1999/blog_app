@@ -8,7 +8,8 @@ import MainLayout from "../layout/MainLayout";
 import LoginPage from "../pages/components/Login/LoginPage";
 import {AuthProvider} from "../shared/context/AuthContext";
 import {ArticlesProvider} from "../shared/context/ArticlesContext";
-import ArticleAdminPage from "../pages/ArticleAdmin/ArticleAdminPage";
+import AddArticlePage from "../pages/components/AddArticlePage/AddArticlePage";
+import EditArticleAdminPage from "../pages/EditArticleAdmin/EditArticleAdminPage";
 
 export const App = () => {
 
@@ -17,10 +18,12 @@ export const App = () => {
           <ArticlesProvider>
               <Routes>
                   <Route element={<MainLayout/>} path={ROUTES.layout}>
-                      <Route element={<ArticleAdminPage/>} index/>
+                      <Route element={<HomePage/>} index/>
                       <Route element={<AdminPanelPage/>} path={ROUTES.adminPanel}/>
                       <Route element={<LoginPage/>} path={ROUTES.login}/>
+                      <Route element={<AddArticlePage/>} path={ROUTES.newArticles}/>
                       <Route element={<ArticleCardPage/>} path={ROUTES.articleById(null)}/>
+                      <Route element={<EditArticleAdminPage/>} path={ROUTES.editArticleById(null)}/>
                   </Route>
               </Routes>
           </ArticlesProvider>

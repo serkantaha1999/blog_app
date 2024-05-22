@@ -6,7 +6,7 @@ interface Props<T extends FieldValues> {
   id?: string;
   register: UseFormRegister<T>;
   placeholder?: string;
-  rules: FieldValues;
+  rules?: FieldValues;
 }
 
 function Textarea<T extends FieldValues>({register, placeholder, rules, name, id}: Props<T>) {

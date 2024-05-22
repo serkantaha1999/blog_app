@@ -1,15 +1,3 @@
-@import "../utils/utils";
-
-.home-page {
-  &__body {
-    padding-top: rem(25);
-    display: grid;
-    gap: rem(20);
-    @media (min-width: $mobileSmall) {
-      @include gridCards(fit, rem(320), 1fr, rem(20));
-    }
-  }
-}
 
 //Imports styles children components
 @import "../components/articles.sass.scss";
