@@ -10,7 +10,6 @@ const Button: FC<Props> = ({children, onClick, theme = "default"}) => {
   return (
     <button
       onClick={onClick}
-      type={'submit'}
       className={`submit-button submit-button-${theme}`}
     >
       {children}
