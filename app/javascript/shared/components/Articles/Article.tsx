@@ -20,7 +20,7 @@ const Article: FC<Props> = ({description, title, imageUrl, id}) => {
       if (location.pathname === ROUTES.adminPanel) {
         return (
           <div className="article-home-page__admin">
-              <ButtonLink theme={"edit"} url={ROUTES.editArticles}>Edit</ButtonLink>
+              <ButtonLink theme={"edit"} url={ROUTES.editArticleById(id)}>Edit</ButtonLink>
             <Button onClick={() => deleteArticle(id)} theme={'delete'}>Delete</Button>
           </div>
         );
