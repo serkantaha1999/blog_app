@@ -63,7 +63,21 @@ export const loginAPI = {
 
 export const adminPanelAPI = {
     async addArticle(article: any) {
-        return await instance.post(`/articles`, article)
+        console.log(article.image)
+        const formData = new FormData();
+        formData.append('image', article.image)
+        const newData = {
+            article: {
+                ...article,
+                image: formData
+            }
+        }
+        console.log(newData)
+        return await instance.post(`/articles`, newData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
     },
     async updateArticle(id: number, article: any) {
         return await instance.put(`/articles/${id}`, article)

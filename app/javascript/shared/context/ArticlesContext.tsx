@@ -70,15 +70,10 @@ export const ArticlesProvider: FC<{ children: ReactNode }> = ({ children }) => {
         }
     }
     const addArticle = async (item: Article) => {
-        const article = {
-            user_id: 1,
-            ...item
-        }
         try {
-            let response = await  adminPanelAPI.addArticle(article);
+           let response = await adminPanelAPI.addArticle(item);
             if (response.status === 200) {
                 alert("Successfully added!")
-                console.log(article)
                 // setData(prevState => ({
                 //     ...prevState,
                 //     articles: [...prevState.articles, article],
