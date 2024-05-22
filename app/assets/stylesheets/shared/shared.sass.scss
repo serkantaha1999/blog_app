@@ -4,7 +4,7 @@
   font-weight: 700;
   line-height: 150%;
   &:not(:last-child) {
-      margin-bottom: em(15, 45);
+    margin-bottom: em(15, 45);
   }
 }
 
@@ -26,7 +26,7 @@
     color: $color-white;
     font-size: rem(12);
     font-weight: 500;
-    transition: background .3s linear;
+    transition: background 0.3s linear;
     &:disabled {
       background: $disabled-pagination-color;
     }
@@ -38,7 +38,7 @@
       background: $hover-link-color;
     }
     &:not(&:disabled) {
-      @media (any-hover: hover){
+      @media (any-hover: hover) {
         &:hover {
           background: $hover-pagination-color;
         }
@@ -57,7 +57,7 @@
   border-radius: rem(8);
   padding: rem(8) rem(10);
   outline: none;
-  @media (max-width:$mobileSmall) {
+  @media (max-width: $mobileSmall) {
     width: 100%;
   }
 }
@@ -75,8 +75,8 @@
   &__name {
     display: block;
     &:not(:last-child) {
-        margin-bottom: rem(8);
-     }
+      margin-bottom: rem(8);
+    }
   }
   &__error {
     padding-top: rem(7);
@@ -105,14 +105,14 @@
   height: rem(40);
   border-radius: rem(8);
   margin-left: auto;
-  transition: background .3s linear;
-  @media (max-width:$mobileSmall) {
+  transition: background 0.3s linear;
+  @media (max-width: $mobileSmall) {
     width: 100%;
   }
   &-default {
     background: $mainColor;
     color: $color-white;
-    @media (any-hover: hover){
+    @media (any-hover: hover) {
       &:hover {
         background: $hover-link-color;
       }
@@ -121,7 +121,7 @@
   &-delete {
     background: $delete-button-color;
     color: $color-white;
-    @media (any-hover: hover){
+    @media (any-hover: hover) {
       &:hover {
         background: $hover-link-color;
       }
@@ -134,15 +134,15 @@
   background: $add-button-color;
   color: $color-white;
   padding: rem(12) rem(18);
-  transition: background .3s linear;
-  @media (any-hover: hover){
+  transition: background 0.3s linear;
+  @media (any-hover: hover) {
     &:hover {
       background: $add-hover-button-color;
     }
   }
   &-edit {
     background: $edit-button-color;
-    @media (any-hover: hover){
+    @media (any-hover: hover) {
       &:hover {
         background: $edit-hover-button-color;
       }

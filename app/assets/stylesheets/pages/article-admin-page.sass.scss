@@ -22,12 +22,14 @@
       padding: 0 rem(20);
     }
   }
-  &__image, &__block {
+  &__image,
+  &__block {
     width: 48%;
     @media (max-width: $mobile) {
       width: 100%;
     }
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
     }
     textarea {
@@ -43,7 +45,7 @@
     }
   }
   &__uploader {
-    border: rem(1) dashed #2E2F30;
+    border: rem(1) dashed #2e2f30;
     border-radius: rem(8);
     height: rem(265);
     margin-bottom: rem(15);
