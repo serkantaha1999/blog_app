@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "articles#index"
 
   get '/signed_in', to: 'articles#signed_in'
+  get '/log_in', to: 'login#log_in'
 
   resources :articles, only: [:index, :show]
 
