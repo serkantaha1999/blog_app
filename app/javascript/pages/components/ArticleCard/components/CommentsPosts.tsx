@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import CommentsPost from "./CommentsPost";
-import {Comments} from "../../../app/api/api";
+import {Comments} from "../../../../app/api/api";
 
 interface Props {
     comments: Comments[]

@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
-import Pagination from '../../shared/components/Pagination/Pagination';
-import {PAGE_SIZE} from '../../shared/utils/constants';
-import HomePageBody from '../../shared/components/Articles/HomePageBody';
-import {useArticles} from "../../shared/context/ArticlesContext";
+import Pagination from '../../../shared/components/Pagination/Pagination';
+import {PAGE_SIZE} from '../../../shared/utils/constants';
+import HomePageBody from '../../../shared/components/Articles/HomePageBody';
+import {useArticles} from "../../../shared/context/ArticlesContext";
 
 const HomePage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

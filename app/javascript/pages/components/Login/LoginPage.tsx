@@ -1,17 +1,17 @@
 import React from 'react';
-import Label from '../../shared/components/Label/Label';
-import Input from '../../shared/components/Input/Input';
-import {emailValidator, passwordValidator} from '../../shared/utils/validationRules';
+import Label from '../../../shared/components/Label/Label';
+import Input from '../../../shared/components/Input/Input';
+import {emailValidator, passwordValidator} from '../../../shared/utils/validationRules';
 import {useForm} from 'react-hook-form';
-import Button from '../../shared/components/Button/Button';
-import {useAuth} from '../../shared/context/AuthContext';
+import Button from '../../../shared/components/Button/Button';
+import {useAuth} from '../../../shared/context/AuthContext';
 
 export interface LoginForm {
   email: string;
   password: string;
 }
 
-const Login = () => {
+const LoginPage = () => {
   const {
     register,
     handleSubmit,
@@ -53,4 +53,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

@@ -1,6 +1,6 @@
 import React, {createContext, FC, ReactNode, useContext, useState} from "react";
 import {loginAPI} from "../../app/api/api";
-import {LoginForm} from "../../pages/Login/Login";
+import {LoginForm} from "../../pages/components/Login/LoginPage";
 import {useNavigate} from "react-router-dom";
 import {ROUTES} from "../../app/router/router-config";
 
