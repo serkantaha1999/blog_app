@@ -8,11 +8,17 @@ const initialState = {
 
 export interface ArticlesData extends ArticleAPI {}
 
+interface Article {
+    image: FileList |  null;
+    title: string
+    content: string
+}
+
 interface ArticlesContextState {
     data: ArticlesData
     fetchArticles: (currentPage: number, pageSize: number) => Promise<void>;
     deleteArticle: (id: number) => Promise<void>;
-    addArticle: (article: Articles) => Promise<void>;
+    addArticle: (item: Article) => Promise<void>;
     updateArticle: (id: number, article: Articles) => Promise<void>;
     isLoading: boolean
 }
@@ -63,16 +69,21 @@ export const ArticlesProvider: FC<{ children: ReactNode }> = ({ children }) => {
             alert("Something went wrong! Please try again!")
         }
     }
-    const addArticle = async (article: Articles) => {
+    const addArticle = async (item: Article) => {
+        const article = {
+            user_id: 1,
+            ...item
+        }
         try {
             let response = await  adminPanelAPI.addArticle(article);
             if (response.status === 200) {
                 alert("Successfully added!")
-                setData(prevState => ({
-                    ...prevState,
-                    articles: [...prevState.articles, article],
-                    limit: prevState.limit + 1
-                }))
+                console.log(article)
+                // setData(prevState => ({
+                //     ...prevState,
+                //     articles: [...prevState.articles, article],
+                //     limit: prevState.limit + 1
+                // }))
             }
         } catch (err) {
             console.log(err)

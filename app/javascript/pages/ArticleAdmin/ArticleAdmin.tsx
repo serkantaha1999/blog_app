@@ -6,17 +6,19 @@ import {useForm} from "react-hook-form";
 import { CiImageOn } from "react-icons/ci";
 import {fileValidator, textareaValidator} from "../../shared/utils/validationRules";
 import Button from "../../shared/components/Button/Button";
+import {useArticles} from "../../shared/context/ArticlesContext";
 
 interface ArticleAdmitForm {
-    file: FileList | null;
-    text: string
+    image: FileList | null;
+    title: string
     content: string
 }
 
 const ArticleAdmin = () => {
-    const {register, formState: {errors}} = useForm<ArticleAdmitForm>({
+    const {register, handleSubmit, reset, formState: {errors}} = useForm<ArticleAdmitForm>({
         mode: "onChange"
     });
+    const {addArticle} = useArticles();
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
@@ -31,11 +33,15 @@ const ArticleAdmin = () => {
         }
     };
 
+    const onSubmit = (data: ArticleAdmitForm) => {
+        addArticle(data)
+    }
+
     return (
       <div className={'page article-admin-page'}>
         <div className="article-admin-page__container">
           <h1 className="home-page__title page-title">New Article</h1>
-          <form className="article-admin-page__form">
+          <form onSubmit={handleSubmit(onSubmit)} className="article-admin-page__form">
             <div className={'article-admin-page__image'}>
               <Label>
                 <div className="article-admin-page__uploader">
@@ -50,7 +56,7 @@ const ArticleAdmin = () => {
                 </div>
                 <Input<ArticleAdmitForm>
                   type={'file'}
-                  name={'file'}
+                  name={'image'}
                   onChange={handleFileChange}
                   register={register}
                   rules={fileValidator}
@@ -61,7 +67,7 @@ const ArticleAdmin = () => {
               <Label>
                 <Input<ArticleAdmitForm>
                   type={'text'}
-                  name={'text'}
+                  name={'title'}
                   register={register}
                   rules={{}}
                   placeholder={'Write title...'}
@@ -76,8 +82,8 @@ const ArticleAdmin = () => {
                 />
               </Label>
             </div>
+              <Button>Publish</Button>
           </form>
-          <Button>Publish</Button>
         </div>
       </div>
     );

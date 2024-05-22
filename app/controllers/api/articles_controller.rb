@@ -50,6 +50,6 @@ class Api::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image, :user_id)
+    params.require(:article).permit(:title, :content, :image).merge(user_id: current_user.id)
   end
 end
