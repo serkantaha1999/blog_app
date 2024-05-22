@@ -32,6 +32,7 @@ const LoginPage = () => {
           <Label errors={errors.email?.message}>
             <Input<LoginForm>
               name={'email'}
+              type={'email'}
               register={register}
               rules={emailValidator}
               placeholder={'Write your email'}
