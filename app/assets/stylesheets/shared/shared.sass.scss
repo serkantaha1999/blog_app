@@ -101,19 +101,39 @@
 
 .submit-button {
   display: inline-block;
-  background: $mainColor;
-  color: #ffffff;
   width: rem(250);
   height: rem(40);
   border-radius: rem(8);
   margin-left: auto;
   transition: background .3s linear;
-  @media (any-hover: hover){
-      &:hover {
-          background: $hover-link-color;
-      }
-  }
   @media (max-width:$mobileSmall) {
     width: 100%;
+  }
+  &-default {
+    background: $mainColor;
+    color: #ffffff;
+    @media (any-hover: hover){
+      &:hover {
+        background: $hover-link-color;
+      }
+    }
+  }
+  &-delete {
+    background: $delete-button-color;
+    color: #ffffff;
+    @media (any-hover: hover){
+      &:hover {
+        background: $hover-link-color;
+      }
+    }
+  }
+  &-edit {
+    background: $edit-button-color;
+    color: #ffffff;
+    @media (any-hover: hover){
+      &:hover {
+        background: $edit-hover-button-color;
+      }
+    }
   }
 }

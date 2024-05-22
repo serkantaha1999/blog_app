@@ -12,6 +12,7 @@ export const App = () => {
        <Routes>
            <Route element={<MainLayout/>} path={ROUTES.layout}>
                <Route element={<Login/>} index/>
+               {/*<Route element={<Login/>} path={ROUTES.login}/>*/}
                <Route element={<AdminPanelPage/>} path={ROUTES.adminPanel}/>
                <Route element={<ArticleCardPage/>} path={ROUTES.articleById(null)}/>
            </Route>

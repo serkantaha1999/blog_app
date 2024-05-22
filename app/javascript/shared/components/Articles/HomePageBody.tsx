@@ -3,6 +3,7 @@ import Article from './Article';
 import ArticleSkeleton from './ArticleSkeleton';
 import {Articles} from '../../../app/api/api';
 import {ARTICLES_SKELETON_COUNT} from '../../utils/constants';
+import Button from "../Button/Button";
 
 interface Props {
   articles: Articles[];
@@ -20,7 +21,12 @@ const HomePageBody: FC<Props> = ({articles, isLoading = false}) => {
               description={article.content}
               imageUrl={article.image.url}
               title={article.title}
-            />
+            >
+              <div className="article-home-page__admin">
+                <Button theme={'edit'}>Edit</Button>
+                <Button theme={'delete'}>Delete</Button>
+              </div>
+            </Article>
           ))
         : [...Array(ARTICLES_SKELETON_COUNT)].map((_, id) => <ArticleSkeleton key={id} />)}
     </div>

@@ -8,9 +8,10 @@ interface Props {
     imageUrl: string
     title: string
     description: string
+    children?: React.ReactNode
 }
 
-const Article: FC<Props> = ({description, title, imageUrl, id}) => {
+const Article: FC<Props> = ({description, title, imageUrl, id, children}) => {
     return (
       <article className="home-page__article article-home-page">
         <RouterLink url={ROUTES.articleById(id)}>
@@ -25,6 +26,7 @@ const Article: FC<Props> = ({description, title, imageUrl, id}) => {
           <h3 className="article-home-page__title">{title}</h3>
           <p className="article-home-page__description">{description}</p>
         </div>
+          {children}
       </article>
     );
 };
