@@ -63,16 +63,12 @@ export const loginAPI = {
 
 export const adminPanelAPI = {
     async addArticle(article: any) {
-        console.log(article.image)
-        const formData = new FormData();
-        formData.append('image', article.image)
         const newData = {
             article: {
                 ...article,
-                image: formData
+                image: article.image[0]
             }
         }
-        console.log(newData)
         return await instance.post(`/articles`, newData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
