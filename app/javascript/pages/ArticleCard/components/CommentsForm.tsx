@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 
 import Label from "../../../shared/components/Label/Label";
 import Input from "../../../shared/components/Input/Input";
-import {messageValidator, nameValidator} from "../../../shared/utils/validationRules";
+import {textareaValidator, nameValidator} from "../../../shared/utils/validationRules";
 import {articlesAPI, Comments} from "../../../app/api/api";
 import Textarea from "../../../shared/components/Textarea/Textarea";
 import Button from "../../../shared/components/Button/Button";
@@ -60,7 +60,7 @@ const CommentsForm: FC<Props> = ({articleId, addedComments}) => {
       <Label errors={errors.content?.message}>
         <Textarea<FormComments>
           name={'content'}
-          rules={messageValidator}
+          rules={textareaValidator}
           register={register}
           placeholder={'Write your comment...'}
         />

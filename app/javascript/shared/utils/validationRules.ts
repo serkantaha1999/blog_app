@@ -20,15 +20,19 @@ export const nameValidator: RegisterOptions = {
     }
 }
 
-export const messageValidator = {
-    required: 'Message is required. Please write your text!',
+export const fileValidator = {
+    required: "The field is required! Please download file!"
+}
+
+export const textareaValidator = {
+    required: 'The field is required. Please write your text!',
     minLength: {
         value: 10,
-        message: 'Message must be at least 10 characters long'
+        message: 'The field must be at least 10 characters long'
     },
     maxLength: {
         value: 500,
-        message: 'Message must be at most 500 characters long'
+        message: 'The field must be at most 500 characters long'
     }
 }
 

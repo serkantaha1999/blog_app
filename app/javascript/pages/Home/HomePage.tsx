@@ -1,13 +1,16 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import Pagination from '../../shared/components/Pagination/Pagination';
-import {useArticles} from '../hooks/useArticles';
 import {PAGE_SIZE} from '../../shared/utils/constants';
 import HomePageBody from '../../shared/components/Articles/HomePageBody';
+import {useArticles} from "../../shared/context/ArticlesContext";
 
 const HomePage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const {isLoading, data} = useArticles(currentPage, PAGE_SIZE);
+  const {isLoading, data, fetchArticles} = useArticles();
 
+  useEffect(() => {
+    fetchArticles(currentPage, PAGE_SIZE)
+  }, [currentPage])
   const onClickCurrentPage = (page: number) => {
     setCurrentPage(page);
   };

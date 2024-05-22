@@ -1,48 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Label from '../../shared/components/Label/Label';
 import Input from '../../shared/components/Input/Input';
 import {emailValidator, passwordValidator} from '../../shared/utils/validationRules';
 import {useForm} from 'react-hook-form';
 import Button from '../../shared/components/Button/Button';
-import {loginAPI} from '../../app/api/api';
-import {useNavigate} from 'react-router-dom';
-import {ROUTES} from '../../app/router/router-config';
-import {useAuth} from '../hooks/useAuth';
+import {useAuth} from '../../shared/context/AuthContext';
 
-interface LoginForm {
+export interface LoginForm {
   email: string;
   password: string;
 }
 
 const Login = () => {
-  const navigate = useNavigate();
-  const {isAuth, setIsAuth} = useAuth();
   const {
     register,
     handleSubmit,
     formState: {errors},
   } = useForm<LoginForm>();
-  const onSubmit = async (data: LoginForm) => {
-    const userInfo = {
-      user: {
-        ...data,
-      },
-    };
-    try {
-      let response = await loginAPI.login(userInfo);
-      if (response.status === 200) {
-        setIsAuth(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  if (isAuth) {
-    navigate(ROUTES.adminPanel);
-  }
+  const {login} = useAuth()
   return (
     <div
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(login)}
       className={'page login-page'}
     >
       <div className="login-page__container">

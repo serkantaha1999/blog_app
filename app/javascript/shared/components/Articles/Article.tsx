@@ -1,17 +1,31 @@
 import React, {FC} from 'react';
-import {RouterLink} from "../Link/Link";
-import {ROUTES} from "../../../app/router/router-config";
-
+import {RouterLink} from '../Link/Link';
+import {ROUTES} from '../../../app/router/router-config';
+import {useLocation} from 'react-router-dom';
+import Button from "../Button/Button";
+import {adminPanelAPI} from "../../../app/api/api";
+import {useArticles} from "../../context/ArticlesContext";
 
 interface Props {
-    id: number
-    imageUrl: string
-    title: string
-    description: string
-    children?: React.ReactNode
+  id: number;
+  imageUrl: string;
+  title: string;
+  description: string;
 }
 
-const Article: FC<Props> = ({description, title, imageUrl, id, children}) => {
+const Article: FC<Props> = ({description, title, imageUrl, id}) => {
+    const location = useLocation();
+    const {deleteArticle} = useArticles()
+    const renderAdminSettings = () => {
+      if (location.pathname === ROUTES.adminPanel) {
+        return (
+          <div className="article-home-page__admin">
+            <Button theme={'edit'}>Edit</Button>
+            <Button onClick={() => deleteArticle(id)} theme={'delete'}>Delete</Button>
+          </div>
+        );
+      }
+    };
     return (
       <article className="home-page__article article-home-page">
         <RouterLink url={ROUTES.articleById(id)}>
@@ -26,7 +40,7 @@ const Article: FC<Props> = ({description, title, imageUrl, id, children}) => {
           <h3 className="article-home-page__title">{title}</h3>
           <p className="article-home-page__description">{description}</p>
         </div>
-          {children}
+          {renderAdminSettings()}
       </article>
     );
 };

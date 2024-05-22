@@ -6,16 +6,24 @@ import AdminPanelPage from '../pages/AdminPanel/AdminPanelPage';
 import ArticleCardPage from '../pages/ArticleCard/ArticleCardPage';
 import MainLayout from "../layout/MainLayout";
 import Login from "../pages/Login/Login";
+import {AuthProvider} from "../shared/context/AuthContext";
+import {ArticlesProvider} from "../shared/context/ArticlesContext";
+import ArticleAdmin from "../pages/ArticleAdmin/ArticleAdmin";
 
 export const App = () => {
+
    return (
-       <Routes>
-           <Route element={<MainLayout/>} path={ROUTES.layout}>
-               <Route element={<HomePage/>} index/>
-               <Route element={<Login/>} path={ROUTES.login}/>
-               <Route element={<AdminPanelPage/>} path={ROUTES.adminPanel}/>
-               <Route element={<ArticleCardPage/>} path={ROUTES.articleById(null)}/>
-           </Route>
-       </Routes>
+       <AuthProvider>
+          <ArticlesProvider>
+              <Routes>
+                  <Route element={<MainLayout/>} path={ROUTES.layout}>
+                      <Route element={<ArticleAdmin/>} index/>
+                      <Route element={<AdminPanelPage/>} path={ROUTES.adminPanel}/>
+                      <Route element={<Login/>} path={ROUTES.login}/>
+                      <Route element={<ArticleCardPage/>} path={ROUTES.articleById(null)}/>
+                  </Route>
+              </Routes>
+          </ArticlesProvider>
+       </AuthProvider>
    )
 };

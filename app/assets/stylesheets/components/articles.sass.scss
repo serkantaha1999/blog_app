@@ -7,6 +7,13 @@
   border-radius: rem(8);
   background: #ffff;
   transition: box-shadow .3s ease 0s;
+  &:only-child {
+    .article-home-page {
+      &__image img {
+        height: auto;
+      }
+    }
+  }
   &__image {
     > img {
       border-radius: rem(10) rem(10) 0 0;
@@ -39,5 +46,10 @@
     display: flex;
     gap: rem(8);
     padding: rem(8);
+    justify-content: flex-end;
+    align-items: center;
+    > button {
+      margin-left: 0;
+    }
   }
 }
