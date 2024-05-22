@@ -4,14 +4,20 @@ import {useArticles} from '../hooks/useArticles';
 import {PAGE_SIZE} from '../../shared/utils/constants';
 import HomePageBody from '../../shared/components/Articles/HomePageBody';
 import {useNavigate} from 'react-router-dom';
+import {useAuth} from "../hooks/useAuth";
+import {ROUTES} from "../../app/router/router-config";
 
 const AdminPanelPage: FC = () => {
     const navigate = useNavigate();
+    const {isAuth} = useAuth()
     const [currentPage, setCurrentPage] = useState(1);
     const {isLoading, data} = useArticles(currentPage, PAGE_SIZE);
     const onClickCurrentPage = (page: number) => {
         setCurrentPage(page);
     };
+    if(!isAuth) {
+        navigate(ROUTES.login);
+    }
     return (
         <section className={'page admin-panel-page'}>
             <div className="admin-panel-page__container">
