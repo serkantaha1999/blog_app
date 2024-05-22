@@ -37,7 +37,7 @@ const ArticleCardPage = () => {
             />
             <CommentsPosts comments={articleCard.comments} />
           </div>
-        ) : null}
+          ) : null}
       </div>
     </section>
   );
