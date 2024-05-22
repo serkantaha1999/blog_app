@@ -1,23 +1,51 @@
 @import "../utils/utils";
 
 .article-admin-page {
-  &__form {
+  &__form-inner {
     display: flex;
     justify-content: space-between;
+    @media (max-width: $mobile) {
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
   }
   &__container {
     max-width: rem(900);
+    @media (max-width: $tablet) {
+      padding: 0 rem(40);
+    }
+    @media (max-width: $mobileSmall) {
+      padding: 0 rem(20);
+    }
   }
   &__image, &__block {
     width: 48%;
+    @media (max-width: $mobile) {
+      width: 100%;
+    }
     input, textarea {
       width: 100%;
+    }
+    textarea {
+      height: rem(250);
+    }
+  }
+  &__image {
+    @media (max-width: $mobile) {
+      order: 1;
+    }
+    .input {
+      color: #fff;
     }
   }
   &__uploader {
     border: rem(1) dashed #2E2F30;
     border-radius: rem(8);
-    height: rem(220);
+    height: rem(265);
     margin-bottom: rem(15);
     img {
       width: 100%;
@@ -32,8 +60,5 @@
       justify-content: center;
       height: 100%;
     }
-  }
-  &__hidden-uploader {
-    display: none;
   }
 }
