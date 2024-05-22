@@ -1,7 +1,12 @@
-import React, {FC, ReactNode} from 'react';
+import React from 'react';
 
 export const Loader = () => {
-    return (
-        <img src="/images/loader.gif" alt="Loading..." />
-    );
+  return (
+    <div className={'loader'}>
+      <img
+        src="/images/loader.gif"
+        alt="Loading..."
+      />
+    </div>
+  );
 };

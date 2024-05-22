@@ -58,7 +58,7 @@ export const ArticlesProvider: FC<{children: ReactNode}> = ({children}) => {
           limit: prevState.limit - 1,
         }));
       }
-      setIsLoading(true);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
       alert('Something went wrong! Please try again!');

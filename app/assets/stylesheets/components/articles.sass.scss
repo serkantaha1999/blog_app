@@ -5,7 +5,7 @@
   flex-direction: column;
   box-shadow: 0 rem(8) rem(16) 0 $shadow;
   border-radius: rem(8);
-  background: #ffff;
+  background: $color-white;
   transition: box-shadow .3s ease 0s;
   &:only-child {
     .article-page {

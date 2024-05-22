@@ -4,6 +4,7 @@ import {formatDate} from '../../../shared/utils/utils';
 import CommentsForm from './components/CommentsForm';
 import CommentsPosts from './components/CommentsPosts';
 import {Comments} from '../../../app/api/api-types';
+import {Loader} from "../../../shared/components/Loader/Loader";
 
 const ArticleCardPage = () => {
   const {articleCard, isLoading, setArticleCard} = useArticleById();
@@ -37,7 +38,7 @@ const ArticleCardPage = () => {
             />
             <CommentsPosts comments={articleCard.comments} />
           </div>
-          ) : null}
+          ) : <Loader/>}
       </div>
     </section>
   );

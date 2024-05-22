@@ -31,13 +31,12 @@
       font-weight: 600;
       transition: color .4s linear;
       @media (any-hover: hover){
-        //todo: declare variable
           &:hover {
-              color: #B00100;
+              color: $hover-link-color;
           }
       }
       &.active {
-        color: #B00100;
+        color: $hover-link-color;
       }
     }
     > .submit-button {
