@@ -1,5 +1,5 @@
 import React, {createContext, FC, ReactNode, useContext, useState} from 'react';
-import {adminPanelAPI, ArticleAPI, articlesAPI} from '../../app/api/api';
+import {adminPanelAPI, ArticleAPI, Articles, articlesAPI} from '../../app/api/api';
 
 const initialState = {
   articles: [],
@@ -12,6 +12,8 @@ interface ArticlesContextState {
     data: ArticlesData
     fetchArticles: (currentPage: number, pageSize: number) => Promise<void>;
     deleteArticle: (id: number) => Promise<void>;
+    addArticle: (article: Articles) => Promise<void>;
+    updateArticle: (id: number, article: Articles) => Promise<void>;
     isLoading: boolean
 }
 
@@ -19,6 +21,8 @@ const defaultArticlesContextState: ArticlesContextState = {
     data: initialState,
     isLoading: true,
     fetchArticles: async () => {},
+    addArticle: async () => {},
+    updateArticle: async () => {},
     deleteArticle: async () => {}
 };
 
@@ -56,11 +60,47 @@ export const ArticlesProvider: FC<{ children: ReactNode }> = ({ children }) => {
             setIsLoading(true)
         } catch (err) {
             console.log(err)
+            alert("Something went wrong! Please try again!")
         }
     }
-
+    const addArticle = async (article: Articles) => {
+        try {
+            let response = await  adminPanelAPI.addArticle(article);
+            if (response.status === 200) {
+                alert("Successfully added!")
+                setData(prevState => ({
+                    ...prevState,
+                    articles: [...prevState.articles, article],
+                    limit: prevState.limit + 1
+                }))
+            }
+        } catch (err) {
+            console.log(err)
+            alert("Something went wrong! Please try again!")
+        }
+    }
+    const updateArticle = async (id: number, article: Articles) => {
+        try {
+            let response = await  adminPanelAPI.updateArticle(id, article);
+            if (response.status === 200) {
+                alert("Successfully updated!")
+                setData(prevState => {
+                    const updatedArticles = prevState.articles.map(item => {
+                        if (item.id === id) {
+                            return { ...item, ...article };
+                        }
+                        return item;
+                    });
+                    return { ...prevState, articles: updatedArticles };
+                });
+            }
+        } catch (err) {
+            console.log(err)
+            alert("Something went wrong! Please try again!")
+        }
+    }
     return (
-        <ArticlesContext.Provider value={{isLoading, data, fetchArticles, deleteArticle }}>
+        <ArticlesContext.Provider value={{isLoading, data, fetchArticles, deleteArticle, addArticle, updateArticle }}>
             {children}
         </ArticlesContext.Provider>
     );

@@ -4,30 +4,27 @@ import Button from '../../../../shared/components/Button/Button';
 import {ROUTES} from '../../../../app/router/router-config';
 import {useAuth} from "../../../../shared/context/AuthContext";
 
+const AuthLink = () => {
+    const { isAuth } = useAuth();
+    const authLink = isAuth ? ROUTES.adminPanel : ROUTES.login;
+    const linkText = isAuth ? 'Admin Panel' : 'Login';
+
+    return (
+        <li className="header-menu__item">
+            <RouterLink url={authLink}>{linkText}</RouterLink>
+        </li>
+    );
+};
+
 const HeaderMenu = () => {
     const {isAuth, logout} = useAuth()
-    const renderAuthLink = () => {
-    if (isAuth) {
-      return (
-        <li className="header-menu__item">
-          <RouterLink url={ROUTES.adminPanel}>{'Admin Panel'}</RouterLink>
-        </li>
-      );
-    } else {
-      return (
-        <li className="header-menu__item">
-          <RouterLink url={ROUTES.login}>{'Login'}</RouterLink>
-        </li>
-      );
-    }
-  };
   return (
     <nav className="header__menu header-menu">
       <ul className="header-menu__list">
         <li className="header-menu__item">
           <RouterLink url={ROUTES.layout}>{'Home'}</RouterLink>
         </li>
-        {renderAuthLink()}
+        <AuthLink/>
         {isAuth && (
           <li className="header-menu__item">
             <Button onClick={logout}>Log out</Button>

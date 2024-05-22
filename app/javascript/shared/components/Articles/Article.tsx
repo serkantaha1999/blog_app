@@ -2,9 +2,9 @@ import React, {FC} from 'react';
 import {RouterLink} from '../Link/Link';
 import {ROUTES} from '../../../app/router/router-config';
 import {useLocation} from 'react-router-dom';
-import Button from "../Button/Button";
-import {adminPanelAPI} from "../../../app/api/api";
-import {useArticles} from "../../context/ArticlesContext";
+import Button from '../Button/Button';
+import {useArticles} from '../../context/ArticlesContext';
+import ButtonLink from '../ButtonLink/ButtonLink';
 
 interface Props {
   id: number;
@@ -20,7 +20,7 @@ const Article: FC<Props> = ({description, title, imageUrl, id}) => {
       if (location.pathname === ROUTES.adminPanel) {
         return (
           <div className="article-home-page__admin">
-            <Button theme={'edit'}>Edit</Button>
+              <ButtonLink theme={"edit"} url={ROUTES.editArticles}>Edit</ButtonLink>
             <Button onClick={() => deleteArticle(id)} theme={'delete'}>Delete</Button>
           </div>
         );

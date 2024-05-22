@@ -1,5 +1,4 @@
 import axios from "axios";
-import Article from "../../shared/components/Articles/Article";
 
 export interface Articles {
     id: number
@@ -66,8 +65,8 @@ export const adminPanelAPI = {
     async addArticle(article: any) {
         return await instance.post(`/articles`, article)
     },
-    async updateArticle(id: number) {
-        return await instance.put(`/articles/${id}`)
+    async updateArticle(id: number, article: any) {
+        return await instance.put(`/articles/${id}`, article)
     },
     async deleteArticle(id: number) {
         return await instance.delete(`/articles/${id}`)

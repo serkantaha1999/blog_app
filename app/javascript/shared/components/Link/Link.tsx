@@ -1,18 +1,22 @@
 import React, {FC, ReactNode} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
+import {cn} from "../../utils/utils";
 
 interface Props {
   url: string;
   children: ReactNode;
+  classnames?: string
 }
 
-export const RouterLink: FC<Props> = ({url, children}) => {
+export const RouterLink: FC<Props> = ({url, children, classnames = "router-link"}) => {
   return (
-    <Link
-      className={'router-link'}
+    <NavLink
+      className={({isActive}) => cn(classnames, {
+        'active': isActive
+      })}
       to={url}
     >
       {children}
-    </Link>
+    </NavLink>
   );
 };

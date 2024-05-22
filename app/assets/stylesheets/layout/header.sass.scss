@@ -36,6 +36,9 @@
               color: #B00100;
           }
       }
+      &.active {
+        color: #B00100;
+      }
     }
     > .submit-button {
         width: rem(80);

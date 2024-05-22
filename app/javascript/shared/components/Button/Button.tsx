@@ -2,7 +2,7 @@ import React, {FC, ReactNode} from 'react';
 
 interface Props {
   onClick?: () => void;
-  theme?: "default" | "edit" | "delete" | "add";
+  theme?: "default" | "delete";
   children: ReactNode;
 }
 

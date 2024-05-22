@@ -127,9 +127,21 @@
       }
     }
   }
+}
+
+.button-link {
+  border-radius: rem(8);
+  background: $add-button-color;
+  color: #ffffff;
+  padding: rem(12) rem(18);
+  transition: background .3s linear;
+  @media (any-hover: hover){
+    &:hover {
+      background: $add-hover-button-color;
+    }
+  }
   &-edit {
     background: $edit-button-color;
-    color: #ffffff;
     @media (any-hover: hover){
       &:hover {
         background: $edit-hover-button-color;
