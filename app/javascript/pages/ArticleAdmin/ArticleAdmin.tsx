@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Label from "../../shared/components/Label/Label";
 import Input from "../../shared/components/Input/Input";
 import Textarea from "../../shared/components/Textarea/Textarea";
@@ -8,13 +8,29 @@ import {fileValidator, textareaValidator} from "../../shared/utils/validationRul
 import Button from "../../shared/components/Button/Button";
 
 interface ArticleAdmitForm {
-    file: string
+    file: FileList | null;
     text: string
     content: string
 }
 
 const ArticleAdmin = () => {
-    const {register, formState: {errors}} = useForm<ArticleAdmitForm>();
+    const {register, formState: {errors}} = useForm<ArticleAdmitForm>({
+        mode: "onChange"
+    });
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files && e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setImagePreview(null);
+        }
+    };
+
     return (
         <div className={"page article-admin-page"}>
             <div className="article-admin-page__container">
@@ -22,11 +38,11 @@ const ArticleAdmin = () => {
                 <form className="article-admin-page__form">
                     <div className={"article-admin-page__image"}>
                         <Label>
-                            <div className={"article-admin-page__uploader"}>
-                                <CiImageOn className={"article-admin-page__uploader-icon"} />
-                                {/*<img src={''} alt="Uploaded image" />*/}
+                            <div className="article-admin-page__uploader">
+                                <CiImageOn className="article-admin-page__uploader-icon" />
+                                {imagePreview && <img src={imagePreview} alt="Selected" />}
                             </div>
-                            <Input<ArticleAdmitForm> type={"file"} name={"file"} register={register} rules={fileValidator}/>
+                            <Input<ArticleAdmitForm> type={"file"} name={"file"} onChange={handleFileChange} register={register} rules={fileValidator}/>
                        </Label>
                     </div>
                     <div className={"article-admin-page__block"}>
