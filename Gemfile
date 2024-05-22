@@ -14,6 +14,7 @@ gem 'jwt'
 gem 'jsonapi-serializer'
 gem 'carrierwave', '~> 3.0'
 gem "jbuilder"
+gem 'terser'
 gem "slim"
 gem "redis", ">= 4.0.1"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
