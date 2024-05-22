@@ -9,7 +9,6 @@ import LoginPage from "../pages/components/Login/LoginPage";
 import {AuthProvider} from "../shared/context/AuthContext";
 import {ArticlesProvider} from "../shared/context/ArticlesContext";
 import ArticleAdminPage from "../pages/ArticleAdmin/ArticleAdminPage";
-import EditArticleAdminPage from "../pages/EditArticleAdmin/EditArticleAdminPage";
 
 export const App = () => {
 
@@ -19,7 +18,6 @@ export const App = () => {
               <Routes>
                   <Route element={<MainLayout/>} path={ROUTES.layout}>
                       <Route element={<ArticleAdminPage/>} index/>
-                      <Route element={<EditArticleAdminPage/>} path={ROUTES.editArticleById(null)}/>
                       <Route element={<AdminPanelPage/>} path={ROUTES.adminPanel}/>
                       <Route element={<LoginPage/>} path={ROUTES.login}/>
                       <Route element={<ArticleCardPage/>} path={ROUTES.articleById(null)}/>

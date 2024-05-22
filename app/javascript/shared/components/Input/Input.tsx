@@ -8,19 +8,20 @@ interface Props<T extends FieldValues> {
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
   rules: FieldValues;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input<T extends FieldValues>({ register, placeholder, rules, name, id, onChange, type = "text"}: Props<T>) {
-    return <input
-        id={id}
-        placeholder={placeholder}
-        {...register(name, rules)}
-        type={type}
-        onChange={onChange}
-        className={"input"}
+function Input<T extends FieldValues>({register, placeholder, rules, name, id, onChange, type = 'text'}: Props<T>) {
+  return (
+    <input
+      id={id}
+      placeholder={placeholder}
+      {...register(name, rules)}
+      type={type}
+      onChange={onChange}
+      className={'input'}
     />
+  );
 }
-
 
 export default Input;
