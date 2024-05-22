@@ -50,52 +50,52 @@ const AdminForm: FC<Props> = ({buttonText, onSubmit, articleCard = null}) => {
   }, []);
 
   return (
-    <form
-      onSubmit={handleSubmit((data: AdminFormType) => onSubmit(data))}
-      className="article-admin-page__form"
-    >
-      <div className={'article-admin-page__form-inner'}>
-        <div className={'article-admin-page__image'}>
-          <Label>
-            <div className="article-admin-page__uploader">
-              {!imagePreview ? (
-                <CiImageOn className="article-admin-page__uploader-icon" />
-              ) : (
-                <img
-                  src={imagePreview}
-                  alt="Selected"
-                />
-              )}
-            </div>
-            <Input<AdminFormType>
-              type={'file'}
-              name={'image'}
-              onChange={handleFileChange}
-              register={register}
-              rules={{}}
-            />
-          </Label>
+      <form
+          onSubmit={handleSubmit((data: AdminFormType) => onSubmit(data))}
+          className="article-admin-page__form"
+      >
+        <div className={'article-admin-page__form-inner'}>
+          <div className={'article-admin-page__image'}>
+            <Label>
+              <div className="article-admin-page__uploader">
+                {!imagePreview ? (
+                    <CiImageOn className="article-admin-page__uploader-icon" />
+                ) : (
+                    <img
+                        src={imagePreview}
+                        alt="Selected"
+                    />
+                )}
+              </div>
+              <Input<AdminFormType>
+                  type={'file'}
+                  name={'image'}
+                  onChange={handleFileChange}
+                  register={register}
+                  rules={{}}
+              />
+            </Label>
+          </div>
+          <div className={'article-admin-page__block'}>
+            <Label>
+              <Input<AdminFormType>
+                  type={'text'}
+                  name={'title'}
+                  register={register}
+                  placeholder={'Write title...'}
+              />
+            </Label>
+            <Label errors={errors.content?.message}>
+              <Textarea<AdminFormType>
+                  name={'content'}
+                  register={register}
+                  placeholder={'Write content...'}
+              />
+            </Label>
+          </div>
         </div>
-        <div className={'article-admin-page__block'}>
-          <Label>
-            <Input<AdminFormType>
-              type={'text'}
-              name={'title'}
-              register={register}
-              placeholder={'Write title...'}
-            />
-          </Label>
-          <Label errors={errors.content?.message}>
-            <Textarea<AdminFormType>
-              name={'content'}
-              register={register}
-              placeholder={'Write content...'}
-            />
-          </Label>
-        </div>
-      </div>
-      <Button>{buttonText}</Button>
-    </form>
+        <Button>{buttonText}</Button>
+      </form>
   );
 };
 

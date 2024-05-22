@@ -88,8 +88,8 @@ export const ArticlesProvider: FC<{children: ReactNode}> = ({children}) => {
     }
   };
   return (
-    <ArticlesContext.Provider value={{isLoading, data, fetchArticles, deleteArticle, addArticle, updateArticle}}>
-      {children}
-    </ArticlesContext.Provider>
+      <ArticlesContext.Provider value={{isLoading, data, fetchArticles, deleteArticle, addArticle, updateArticle}}>
+        {children}
+      </ArticlesContext.Provider>
   );
 };
